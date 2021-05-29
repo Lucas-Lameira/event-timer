@@ -1,0 +1,25 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {    
+  --background-color: #5844da;
+  --white: #FFFFFF;
+  --black: #000000;
+  --btn-text:#F3689A;
+}
+
+html{
+  height: 100vh;
+  font-size: 62.5%;
+  background: var(--background-color);
+}
+body{
+  position: relative;
+}
+
+button{
+  cursor: pointer;
+}

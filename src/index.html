@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Lucas Lameira">
+  <meta name="description" content="Web application to register events and start a countdown timer">  
+  <link rel="stylesheet" href="./styles/default.css">
+  
+  <link rel="stylesheet" href="./styles/styles.css">
+  <title>Event timer | your favorite event</title>
+</head>
+<body>
+  <header>
+    <button id="add-event">
+      <h1>Add event</h1>
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+    </button>
+        
+    <button id="tooltip">
+      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    </button>
+  </header>
+
+  <main id="main-container">    
+  </main>
+
+  <!-- Modal html -->
+  <div class="modal-bg">    
+    <section id="modal">        
+      <div id="data-field">            
+        <fieldset>
+          <label for="input-event-name">
+            <legend>Event name</legend>
+          </label>
+          <input 
+            type="text" 
+            name="input-event-name" 
+            id="input-event-name" 
+            placeholder="Enter the event name" 
+            required
+          >
+        </fieldset>
+
+        <div id="input-group">
+          <fieldset>        
+            <label for="input-event-date">
+              <legend>Data</legend>
+            </label>
+            <input 
+              id="input-event-date" 
+              type="date" 
+              name="input-event-date" 
+              required
+            >
+          </fieldset>                
+          <fieldset>
+            <label for="input-event-time">
+              <legend>Time</legend>
+            </label>
+            <input 
+              type="time" 
+              name="input-event-time" 
+              id="input-event-time"
+            >
+          </fieldset>                    
+        </div>
+      </div> 
+
+      <button id="register-btn" onclick="registerNewEvent()">
+        Register
+      </button> 
+
+      <span class="modal-close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+      </span>  
+    </section>
+  </div>
+
+  <!-- Tooltip Html -->
+  <div class="tooltip-bg">
+    <section id="tooltip-content">
+      <p>
+        Clique em Add event para cadastrar a data de um evento e saiba quantos dias, horas, minutos e segundos faltam para a data do evento
+      </p>
+      <span class="close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+      </span>
+    </section>
+  </div>
+
+
+  <script type="module" src="index.js"></script>
+</body>
+</html>

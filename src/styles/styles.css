@@ -1,0 +1,244 @@
+
+/* header styles */
+header{    
+  display: flex;    
+  align-items: center;
+  justify-content: space-between;    
+  padding: 3rem 5rem;    
+}
+
+header button {    
+  background:transparent;
+  color:var(--white);
+  width: 25rem;
+  height: 5rem;
+  border: none;
+  outline: none;  
+}
+
+header #add-event{
+  display: flex;
+  align-items: center; 
+  justify-content: center; 
+  border: 1px solid rgba(255, 255, 255, 0.685);
+}
+
+header #add-event:hover{  
+  border: 1px solid rgb(255, 255, 255);
+}
+ 
+header svg:hover{
+  fill: var(--btn-text); 
+} 
+
+header h1 {    
+  font-size: 3rem;
+  font-weight: bold;
+  margin-right: 1rem;  
+}
+
+header #tooltip{
+  margin-right: 1rem;
+  width: 10rem;
+}
+
+
+
+/* ------------MAIN----------------- */
+#main-container .event-block{
+  background: var(--white);
+  width: 70vw;
+  height: 9rem;
+  margin: 1rem auto 4rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+
+#main-container .event-block h1{
+  font-size: 2rem;
+  margin: 0.3rem 0 0 1rem;
+}
+
+#main-container .event-block .event-header{
+  display: flex;
+  justify-content: space-between;
+}
+
+#main-container .event-block .event-header .img-group img{
+  width: 1.5rem;
+  height: 1.5rem;
+  margin: 0.3rem 0.5rem;
+}
+
+#main-container .event-block .event-header .img-group:last-child{
+  margin-right: 1.2rem;
+}
+
+#main-container .event-section{
+  width: 100%;
+  display: flex;
+  align-items: center;  
+}
+
+#main-container .event-section .event-info{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;  
+  width: 45%;
+  margin-top: 0rem;
+  font-size: 1.5rem;
+}
+
+#main-container .event-section .event-info p{
+  margin-top: 0.3rem;
+}
+
+#main-container .event-section button{
+  position: relative;
+  top: 3.8rem;    
+}
+
+#main-container .event-section .countdown-timer{
+  font-size: 2rem;   
+  width: 45%;
+  position: relative;
+  top: -1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#main-container .event-section .countdown-timer th, td{    
+  padding: 0.5rem;    
+  text-align: center;
+}
+
+.start-btn, #register-btn{
+  font-size: 1.5rem;
+  background-color: var(--btn-text);
+  color: var(--white);
+  outline: none;
+  border: none;
+  border-radius: 0.4rem;
+}
+
+.start-btn{
+  width: 9rem;
+  height: 5rem;  
+}
+
+/* MODAL MODAL MODAL MODAL MODAL */
+.modal-bg{
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  background: rgba(0, 0, 0, 0.5);
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.modal-open{    
+  visibility: visible;
+  opacity: 1;
+}
+
+.modal-close{
+  position: absolute;
+  top: 1rem;
+  right: 1.8rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.modal-close:hover{
+  cursor: pointer;
+}
+
+#modal{
+  position: relative;
+  background: var(--white);
+  border-radius: 0.8rem;
+  width: 50%;
+  margin: 0 auto;
+  padding: 5rem;
+}
+
+#modal #data-field fieldset legend{
+  margin-bottom: 0.4rem;
+}
+
+#modal #data-field fieldset input{    
+  height: 2.5rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.315);
+  margin-bottom: 1.5rem;
+  border-radius: 0.3rem;
+  font-size: 1.4rem;    
+  padding: 0.5rem;
+}
+
+#modal #data-field fieldset #input-event-name{
+  width: 70%;
+}
+
+#modal #data-field fieldset #input-event-date{
+  margin-right: 1rem;
+}
+
+#modal #data-field fieldset legend{
+  font-size: 2rem;
+}
+
+#modal #data-field #input-group{
+  display: flex;    
+  align-items: center;
+  justify-content: start;    
+}
+
+#modal #data-field #input-group:last-child{
+  margin-bottom: 2rem;
+}
+
+#register-btn{
+  width: 11rem;
+  height: 5rem;
+}
+
+/* ------ tooltipstyle ---------- */
+.tooltip-bg{
+  position: fixed;
+  top: 0rem;
+  right: 0rem;
+  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.5s;
+}
+
+.tooltip-bg #tooltip-content{
+  background: var(--white);
+  color: var(--black);
+  font-size: 2rem;
+  width: 70vw;
+  margin: 8rem auto 0;
+  padding: 5rem;
+  border-radius: 0.8rem;
+  line-height: 3rem;
+}
+
+.tooltip-bg span{
+  position: absolute;
+  top: 9rem;
+  right: 13rem;    
+}
