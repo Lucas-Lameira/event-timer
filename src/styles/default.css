@@ -5,7 +5,7 @@
 }
 
 :root {    
-  --background-color: #5844da;
+  --light-blue: #61C6FF;
   --white: #FFFFFF;
   --black: #000000;
   --btn-text:#F3689A;
@@ -16,10 +16,40 @@ html{
   font-size: 62.5%;
   background: var(--background-color);
 }
+
 body{
+  /* position relative cuz modal is fixed */
   position: relative;
+  background: var(--white);
+  font-family: 'Roboto', sans-serif;
 }
 
 button{
   cursor: pointer;
 }
+
+h1{  
+  font-size: 5rem;
+  font-weight: 900;
+  color: var(--white);
+}
+
+@media screen and (min-width:768px){
+  html{
+    font-size: 75.00%;  /* 12px */
+  } 
+}
+
+@media screen and (min-width:1080px){
+  html{
+    font-size: 87.50%;/* 14px */
+  }
+} 
+
+/* 
+
+font-family: 'Orbitron', sans-serif; 700
+
+font-family: 'Roboto', sans-serif; 400/500/700/900
+
+*/

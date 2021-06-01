@@ -6,25 +6,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="author" content="Lucas Lameira">
   <meta name="description" content="Web application to register events and start a countdown timer">  
-  <link rel="stylesheet" href="./styles/default.css">
-  
+  <link rel="stylesheet" href="./styles/default.css">  
   <link rel="stylesheet" href="./styles/styles.css">
-  <title>Event timer | your favorite event</title>
-</head>
-<body>
-  <header>
-    <button id="add-event">
-      <h1>Add event</h1>
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-    </button>
-        
-    <button id="tooltip">
-      <svg xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
-    </button>
-  </header>
 
-  <main id="main-container">    
+  <!-- Google fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <title>Event timer | add your favorite event</title>
+</head>
+
+<body>
+  <div class="btn-group">
+    <button id="tooltip">
+      <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-alert-circle"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    </button>
+    <button id="add-event">      
+      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="2" x2="12" y2="23"></line><line x1="2" y1="12" x2="26" y2="12"></line></svg>
+    </button>        
+  </div>
+
+  <main id="container">    
+    <h1 class="title">Event Countdown</h1>    
+
+    <div id="mainID" class="event-container">            
+      <aside class="event-info">
+        <h2 class="event-title">Dia das mães</h2>
+        
+        <div class="info">
+          <h2>Data</h2>
+          <strong>10/02/1996</strong>
+        </div>
+        
+        <div class="info">
+          <h2>Data</h2>
+          <strong>21:10</strong>
+        </div>
+      </aside>
+
+      <section class="times-square">
+        <div class="time-container">        
+          <strong class="timer">00</strong>         
+          <span>Dia</span>
+        </div>   
+        
+        <div class="time-container">        
+          <strong class="timer">00</strong>         
+          <span>Hora</span>
+        </div>      
+  
+        <div class="time-container">        
+          <strong class="timer">00</strong>         
+          <span>Minuto</span>
+        </div>      
+  
+        <div class="time-container">        
+          <strong class="timer">00</strong>         
+          <span>Segundo</span>
+        </div>
+      </section>
+
+      <button     
+        onclick = "initCount()"
+        id="hitme"
+        value="teste"
+      >
+        <img src="../images/play.png" alt="play icon">
+      </button>
+    </div>
   </main>
+  
 
   <!-- Modal html -->
   <div class="modal-bg">    
@@ -38,8 +88,7 @@
             type="text" 
             name="input-event-name" 
             id="input-event-name" 
-            placeholder="Enter the event name" 
-            required
+            placeholder="Enter the event name"                        
           >
         </fieldset>
 
@@ -52,7 +101,7 @@
               id="input-event-date" 
               type="date" 
               name="input-event-date" 
-              required
+              required                           
             >
           </fieldset>                
           <fieldset>
@@ -89,8 +138,31 @@
       </span>
     </section>
   </div>
+   
+  <!-- <script type="module"src="./utils/validation.js"></script> -->
+  <script>
+    // open modal  
+    document.querySelector('#add-event').addEventListener('click', function(){
+      console.log('click')
+        document.querySelector('.modal-bg').classList.add('modal-open');
+    });
 
+    //close modal
+    document.querySelector('.modal-close').addEventListener('click', function(){
+      document.querySelector('.modal-bg').classList.remove('modal-open');
+    });
 
-  <script type="module" src="index.js"></script>
+    // tooltip open
+    document.querySelector('#tooltip').addEventListener('click', function() { 
+      document.querySelector('.tooltip-bg').classList.add('modal-open');
+      console.log('open')
+    })
+
+    document.querySelector('.close').addEventListener('click', function() {
+      document.querySelector('.tooltip-bg').classList.remove('modal-open');
+      console.log('close')
+    });
+  </script>
+  <script src="index.js"></script>
 </body>
 </html>

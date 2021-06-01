@@ -1,5 +1,7 @@
 //esmodules - variaveis não ficam global
 
+
+//name validation
 export const isNameEmpty = (name) => {
   name ? true : false
 }
@@ -10,13 +12,14 @@ export const isOutOfDate = (date, time) =>  {
     alert('Empty date');
     return true;
   } 
-
+  
+  let check = 0;
+  
   time = validateTime(time)
 
   const [year, month, day] = date.split('-');
   const [hour, minute] = time.split(':');
-  
-  month-=1;
+  month-=1;  
       
   const current = new Date().getTime();
   const event = new Date(year, month, day, hour, minute).getTime();
