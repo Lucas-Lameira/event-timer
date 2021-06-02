@@ -27,51 +27,52 @@
 
   <main id="container">    
     <h1 class="title">Event Countdown</h1>    
+    <div id="timer-container">    
+    <!--   <div id="1" class="event-container">            
+        <aside class="event-info">
+          <h2 class="event-title">Dia das mães</h2>
+          
+          <div class="info">
+            <h2>Data</h2>
+            <strong>10/02/1996</strong>
+          </div>
+          
+          <div class="info">
+            <h2>Hora</h2>
+            <strong>21:10</strong>
+          </div>
+        </aside>
 
-    <div id="mainID" class="event-container">            
-      <aside class="event-info">
-        <h2 class="event-title">Dia das mães</h2>
-        
-        <div class="info">
-          <h2>Data</h2>
-          <strong>10/02/1996</strong>
-        </div>
-        
-        <div class="info">
-          <h2>Data</h2>
-          <strong>21:10</strong>
-        </div>
-      </aside>
+        <section class="times-square">
+          <div class="time-container">        
+            <strong class="timer">00</strong>         
+            <span>Dia</span>
+          </div>   
+          
+          <div class="time-container">        
+            <strong class="timer">00</strong>         
+            <span>Hora</span>
+          </div>      
+    
+          <div class="time-container">        
+            <strong class="timer">00</strong>         
+            <span>Minuto</span>
+          </div>      
+    
+          <div class="time-container">        
+            <strong class="timer">00</strong>         
+            <span>Segundo</span>
+          </div>
+        </section>
 
-      <section class="times-square">
-        <div class="time-container">        
-          <strong class="timer">00</strong>         
-          <span>Dia</span>
-        </div>   
-        
-        <div class="time-container">        
-          <strong class="timer">00</strong>         
-          <span>Hora</span>
-        </div>      
-  
-        <div class="time-container">        
-          <strong class="timer">00</strong>         
-          <span>Minuto</span>
-        </div>      
-  
-        <div class="time-container">        
-          <strong class="timer">00</strong>         
-          <span>Segundo</span>
-        </div>
-      </section>
-
-      <button     
-        onclick = "initCount()"
-        id="hitme"
-        value="teste"
-      >
-        <img src="../images/play.png" alt="play icon">
-      </button>
+        <button     
+          onclick = "initCount(this.value)"        
+          value="1"
+        >
+          <img src="../images/play.png" alt="play icon">
+        </button>
+      </div>
+ -->
     </div>
   </main>
   
@@ -88,7 +89,9 @@
             type="text" 
             name="input-event-name" 
             id="input-event-name" 
-            placeholder="Enter the event name"                        
+            placeholder="Enter the event name"
+            min="5"
+            max="15"                      
           >
         </fieldset>
 
@@ -118,7 +121,8 @@
       </div> 
 
       <button id="register-btn" onclick="registerNewEvent()">
-        Register
+        Evento
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" class="feather feather-plus"><line x1="12" y1="2" x2="12" y2="23"></line><line x1="2" y1="12" x2="26" y2="12"></line></svg>
       </button> 
 
       <span class="modal-close">

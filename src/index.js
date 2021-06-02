@@ -1,13 +1,23 @@
+let currentTime = 0;
+let diference = 0;
+let segundos = 0;
+let minutos = 0;
+let hora = 0;
+let dia = 0;
+
+
 let eventsData = [
-  //{id, eventName, eventDate, eventTime} data structure
-];
-let id = eventsData.length;
+  //{id, eventName, eventDate, eventTime, toggle} //data structure
+]; 
+let id = -1;
 
 function registerNewEvent() {  
   //get user input | string type 
   const eventName = document.getElementById("input-event-name").value;//"string name"
   const eventDate = document.getElementById("input-event-date").value;//"yyyy-mm-dd"
   const eventTime = document.getElementById("input-event-time").value;//"hh:mm"
+
+  //console.log(`${typeof eventDate}:${eventDate} ${typeof eventTime}:${eventTime}`)
 
   //data validation
   if(isNameEmpty(eventName)){
@@ -19,85 +29,137 @@ function registerNewEvent() {
   };
 
   //format data
-  //code here
-
+  let eventDay = formatEventDate(eventDate, eventTime); 
+  console.log(eventDay);
+  
   //store data
   id++; //id for each countdown
-  eventsData.push({id, eventName, eventDate, eventTime});
-   
+  eventsData.push({
+    id,
+    eventName,
+    eventDay,
+    toggle: false, 
+    intervalId: null
+  });     
+  
   //create element
-  let main = document.getElementById("container");
-
   let child = document.createElement("div")
   child.setAttribute("class", "event-container")
-  /* troll.setAttribute("id", "event-container") */
-  child.innerHTML = `        
+  child.setAttribute("id", `${id}`)
+  child.innerHTML = `
+  <aside class="event-info">
+    <h2 class="event-title">${eventName}</h2>
+    
+    <div class="info">
+      <h2>Data</h2>
+      <strong>${eventDate}</strong>
+    </div>
+    
+    <div class="info">
+      <h2>Hora</h2>
+      <strong>${eventTime}</strong>
+    </div>
+  </aside>
+
+  <section class="times-square">
     <div class="time-container">        
-      <strong class="timer">00</strong>         
+      <strong class="timer timer${id}" >00</strong>         
       <span>Dia</span>
     </div>   
-
+    
     <div class="time-container">        
-      <strong class="timer">00</strong>         
+      <strong class="timer timer${id}">00</strong>         
       <span>Hora</span>
     </div>      
 
     <div class="time-container">        
-      <strong class="timer">00</strong>         
+      <strong class="timer timer${id}">00</strong>         
       <span>Minuto</span>
     </div>      
 
     <div class="time-container">        
-      <strong class="timer">00</strong>         
+      <strong class="timer timer${id}">00</strong>         
       <span>Segundo</span>
-    </div>  
-  ` 
-  main.appendChild(child)
+    </div>
+  </section>
+
+  <button     
+    onclick = "initCount(this.value)"    
+    value="${id}"
+  >
+    <img src="../images/play.png" alt="play icon">
+  </button>
+  `
+  let main = document.getElementById("timer-container");
+  main.appendChild(child)    
   document.querySelector('.modal-bg').classList.remove('modal-open');
 }
 
-function initCount() {
-  //retorna um array|htmlcollection
-  const outputs = document.getElementsByClassName("timer");
+
+/* eventsData.push({
+  id,
+  eventName,
+  eventDay,
+  toggle: false, 
+  intervalId: 0
+}); */   
+
+function initCount(identifier) {
+  //retorna um array|htmlcollection  
+  eventsData[identifier].toggle = !eventsData[identifier].toggle;
+  let {eventDay, toggle} = eventsData[identifier];
   
-  const data = {       
-    eventDate: '2021-06-12', 
-    time: '10:00'
-  }
-  
-  let [year, month, day] = data.eventDate.split('-');
-  let [hour, minute] = data.time.split(':');
-  
-  month-=1;
+  console.log(toggle)
 
-  function renderTime(){        
-    currentTime = new Date().getTime();            
-    eventTime = new Date(year, month, day, hour, minute).getTime();
-
-    diference = eventTime - currentTime;
-
-    segundos = Math.floor(diference / 1000);
-    minutos = Math.floor(segundos / 60);
-    hora = Math.floor(minutos / 60);
-    dia = Math.floor(hora / 24);
-
-    hora %= 24;
-    minutos %= 60;
-    segundos %= 60;
-
-    hora = hora < 10 ? "0" + hora : hora; 
-    minutos = minutos < 10 ? "0" + minutos : minutos; 
-    segundos = segundos < 10 ? "0" + segundos : segundos; 
+  if(toggle){    
+    //get the parent
+    let parent = document.getElementById(identifier);
     
-    outputs[0].innerHTML = dia
-    outputs[1].innerHTML = hora
-    outputs[2].innerHTML = minutos
-    outputs[3].innerHTML = segundos
+    //get the third child      
+    let btn = parent.children[2];
+    btn.innerHTML = `<img src="../images/pause.png" alt="play icon">` 
+    
+    //get inputs for timer
+    let outputs = document.getElementsByClassName(`timer${identifier}`)    
+    
+    function renderTime(){        
+      
+      currentTime = new Date().getTime();                  
+  
+      diference = eventDay - currentTime;      
+
+      segundos = Math.floor(diference / 1000);
+      minutos = Math.floor(segundos / 60);
+      hora = Math.floor(minutos / 60);
+      dia = Math.floor(hora / 24);
+  
+      hora %= 24;
+      minutos %= 60;
+      segundos %= 60;
+  
+      hora = hora < 10 ? "0" + hora : hora; 
+      minutos = minutos < 10 ? "0" + minutos : minutos; 
+      segundos = segundos < 10 ? "0" + segundos : segundos; 
+      
+      outputs[0].innerHTML = dia
+      outputs[1].innerHTML = hora
+      outputs[2].innerHTML = minutos
+      outputs[3].innerHTML = segundos
+    }
+    
+    eventsData[identifier].intervalId = setInterval(renderTime, 1000);
+    
+  } else{    
+    //get the parent
+    let parent = document.getElementById(identifier);
+  
+    //get the third child      
+    let btn = parent.children[2];
+    btn.innerHTML = `<img src="../images/play.png" alt="play icon">`
+    
+    clearInterval(eventsData[identifier].intervalId)
   }
-
-  setInterval(renderTime, 1000);  
 }
-
 
 //name validation
 function isNameEmpty(name){
@@ -136,4 +198,15 @@ function isOutOfDate (date, time){
 function validateTime(time){        
   if(time === '') return "00:00"
   else return time  
+}
+
+function formatEventDate(date, time){
+  let [year, month, day] = date.split('-');
+  let [hour, minute] = time.split(':');
+  month-=1
+
+  let x = new Date(year, month, day, hour, minute).getTime();
+  
+  console.log(`Formated:${typeof x}:${x}`);
+  return x;
 }

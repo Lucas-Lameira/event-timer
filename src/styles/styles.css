@@ -1,4 +1,3 @@
-
 /* header styles */
 .btn-group{    
   position: absolute;
@@ -23,7 +22,11 @@
 }
  
 .btn-group svg:hover{
-  fill: var(--btn-text); 
+  fill: var(--light-blue);   
+} 
+
+.btn-group button:last-child svg:hover{
+  color:var(--light-blue);  
 } 
 
 .btn-group #tooltip{  
@@ -48,11 +51,19 @@ main{
 
 .event-container{
   background: var(--black);
-  padding: 2rem 2rem;
+  padding: 2rem 0rem 2rem 2rem;
+  margin-bottom: 1rem;
   width: 70%;  
-  display: grid;
-  grid-template-columns:repeat(3, 1fr);  
+  /* display: grid;
+  grid-template-columns:repeat(3, 1fr);   */
+  display: flex;
+  justify-content: flex-start;
   position: relative;
+}
+
+#timer-container{
+  overflow-y: scroll;
+  height: 40%;
 }
 
 .event-info{  
@@ -60,10 +71,24 @@ main{
   display: flex;
   flex-direction: column;
   justify-content: space-around;  
+  margin-right: 3rem;
 }
 
 .event-info .event-title{
   color: var(--white);
+  font-size: 1.4rem;
+  font-weight: 900;
+  text-decoration: underline double var(--light-blue);
+}
+
+.info h2{
+  font-size: 1.1rem;
+  font-weight: 500;  
+}
+
+.info strong{
+  color: rgb(144, 144, 144);
+  font-size: 1rem;
 }
 
 .event-container .times-square{
@@ -77,22 +102,26 @@ main{
   justify-content: center;
   color: var(--white);
   margin: 0 0.5rem;
+  
 }
 
 .timer{
   display: grid;
   place-items: center;  
   background: var(--white);
-  font-family: 'Orbitron', sans-serif;
-  width: 7rem;
-  height: 7rem;  
-  /* color: var(--black); */
+  font-family: 'Orbitron', sans-serif;  
+  padding: 1rem;
+  width: 7.5rem;
+  height: 7rem;
   color: var(--light-blue);
-  font-size: 4rem;    
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  border-radius: 8px;
 }
 
-
+.time-container span{
+color: rgb(197, 197, 197);
+}
 
 .event-container button{
   background: transparent;
@@ -105,18 +134,27 @@ main{
 
 
 /* --------------- Buttons ---------- */
-.start-btn, #register-btn{
-  font-size: 1.5rem;
-  background-color: var(--btn-text);
+#register-btn{
+  font-size: 1.4rem;
+  background: var(--light-blue);
   color: var(--white);
   outline: none;
   border: none;
   border-radius: 0.4rem;
+  font-weight: bold; 
+  display: flex; 
+  align-items: center;
+  justify-content: center;
+  padding: 1.6rem;
 }
 
-.start-btn{
-  width: 9rem;
-  height: 5rem;  
+#register-btn svg{
+  margin-left:0.5rem;
+}
+
+#register-btn:disabled{
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /*----------- modal -------------- */
@@ -149,7 +187,7 @@ main{
 }
 
 #modal #data-field fieldset legend{
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.4rem;   
 }
 
 #modal #data-field fieldset input{    
@@ -158,29 +196,22 @@ main{
   margin-bottom: 1.5rem;
   border-radius: 0.3rem;
   font-size: 1.4rem;    
-  padding: 0.5rem;
+  padding: 1.4rem;  
 }
 
 #modal #data-field fieldset #input-event-name{
-  width: 70%;
-}
-
-#modal #data-field fieldset #input-event-date{
-  margin-right: 1rem;
+  width: 100%;
 }
 
 #modal #data-field fieldset legend{
-  font-size: 2rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--light-blue);
 }
 
 #modal #data-field #input-group{
-  display: flex;    
-  align-items: center;
-  justify-content: start;    
-}
-
-#modal #data-field #input-group:last-child{
-  margin-bottom: 2rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 /* ------ tooltipstyle ---------- */
